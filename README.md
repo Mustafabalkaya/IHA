@@ -82,5 +82,5 @@ Bu sayede, yönetici olan kullanıcılar projedeki veri yönetimini etkili bir �
 ```
 # 1 Giriş Yapma Ekranı
 ```
-![Giriş Yapma Ekranı]([https://raw.githubusercontent.com/Mustafabalkaya/UAV-Rental-Application-with-Python-Django/main/Screenshots/GirisYap.JPG])
+![alt text](https://raw.githubusercontent.com/Mustafabalkaya/UAV-Rental-Application-with-Python-Django/main/Screenshots/GirisYap.JPG)
 
