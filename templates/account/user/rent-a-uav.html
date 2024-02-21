@@ -1,0 +1,211 @@
+{% include 'includes/header.html' %}
+
+<section class="mt-5 mb-5 text-center d-flex justify-content-center" id="list">
+
+    <div class="card text-start w-100">
+        <div class="card-header d-flex justify-content-between align-items-center">
+            <h3 class="card-title">IHA Ara</h3>
+        </div>
+        <div class="card-body">
+            <form method="POST" style="width:100%;">
+                {% if messages %}
+                    {% for message in messages %}
+                        <div class="alert alert-success" role="alert">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                {% endif %}
+                {% if error_message %}
+                    <div class="alert alert-danger" role="alert">
+                        {{ error_message }}
+                    </div>
+                {% endif %}
+
+                {% csrf_token %}
+                <div>
+                    <div class="row">
+                        <div class="col-sm-6 mb-3">
+                            <label>Marka</label>
+                            <select name="search_uav_brand" id="search_uav_brand" class="form-control"></select>
+                        </div>
+                        <div class="col-sm-6 mb-3">
+                            <label>Model</label>
+                            <select name="search_uav_model" id="search_uav_model" class="form-control"></select>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div class="row">
+                        <div class="col-sm-6 mb-3">
+                            <label>Tarih Başlangıç</label>
+                            <input type="date" min="" name="date_start" id="date_start" class="form-control">
+                        </div>
+                        <div class="col-sm-6 mb-3">
+                            <label>Tarih Bitiş</label>
+                            <input type="date" min="" name="date_end" id="date_end" class="form-control">
+                        </div>
+                    </div>
+                </div>
+                <button type="button" id="search" class="btn btn-primary">Ara</button>
+            </form>
+
+            <b>Sonuçlar:</b>
+            <div class="table-responsive">
+                <table id="dataTable" class="table table-centered table-nowrap mb-0 rounded">
+                    <thead class="thead-light">
+                    <tr>
+                        <th class="border-0">İsim</th>
+                        <th class="border-0">Marka</th>
+                        <th class="border-0">Model</th>
+                        <th class="border-0">Ağırlık</th>
+                        <th class="border-0">Menzil</th>
+                        <th class="border-0">Günlük Ücret</th>
+                        <th class="border-0">Toplam Ücret</th>
+                        <th class="border-0">İşlem</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+{% include 'includes/footer.html' %}
+<script>
+    $(document).ready(function () {
+        // Markaları çekmek için AJAX isteği
+        $.ajax({
+            url: '/rest/getUavBrands/',
+            method: 'GET',
+            success: function (response) {
+                var brands = response.brands;
+                var options = '<option value="">Marka Seçin</option>';
+                brands.forEach(function (brand) {
+                    options += '<option value="' + brand + '">' + brand + '</option>';
+                });
+                $('#search_uav_brand').html(options);
+            },
+            error: function (xhr, errmsg, err) {
+                console.log("Hata: " + xhr.status + ": " + xhr.responseText);
+            }
+        });
+
+        // Marka seçildiğinde modelleri çekmek için AJAX isteği
+        $('#search_uav_brand').change(function () {
+            var selectedBrand = $(this).val();
+            if (selectedBrand) {
+                $.ajax({
+                    url: '/rest/getUavModels/',
+                    method: 'POST',
+                    data: {
+                        brand: selectedBrand,
+                        csrfmiddlewaretoken: '{{ csrf_token }}'
+                    },
+                    success: function (response) {
+                        var models = response.models;
+                        var options = '<option value="">Model Seçin</option>';
+                        models.forEach(function (model) {
+                            options += '<option value="' + model + '">' + model + '</option>';
+                        });
+                        $('#search_uav_model').html(options);
+                    },
+                    error: function (xhr, errmsg, err) {
+                        console.log("Hata: " + xhr.status + ": " + xhr.responseText);
+                    }
+                });
+            }
+        });
+        $("#search").click(function () {
+            // Form verilerini al
+            var selectedBrand = $("#search_uav_brand").val();
+            var selectedModel = $("#search_uav_model").val();
+            var startDate = $("#date_start").val();
+            var endDate = $("#date_end").val();
+
+            // Verilerin dolu olup olmadığını kontrol et
+            if (selectedBrand && selectedModel && startDate && endDate) {
+                // AJAX isteği
+                $.ajax({
+                    url: '/rest/searchUavs/',
+                    method: 'POST',
+                    data: {
+                        brand: selectedBrand,
+                        model: selectedModel,
+                        start_date: startDate,
+                        end_date: endDate,
+                        csrfmiddlewaretoken: '{{ csrf_token }}'
+                    },
+                    success: function (response) {
+                        // Sonuçları işle
+                        var uavs = response.uavs;
+                        var tbody = $('#dataTable tbody');
+                        tbody.empty();
+                        uavs.forEach(function (uav) {
+                            var row = '<tr>';
+                            row += '<td>' + uav.uav_name + '</td>';
+                            row += '<td>' + uav.uav_brand + '</td>';
+                            row += '<td>' + uav.uav_model + '</td>';
+                            row += '<td>' + uav.uav_weight + '</td>';
+                            row += '<td>' + uav.uav_range + '</td>';
+                            row += '<td>' + uav.daily_rental_fee + '</td>';
+                            row += '<td>' + uav.total_fee + '</td>';
+                            row += '<td><button type="button" class="btn btn-success rent-btn" onclick="rent(' + uav.id + ')">Kirala</button></td>';
+                            row += '</tr>';
+                            tbody.append(row);
+                        });
+                    },
+                    error: function (xhr, errmsg, err) {
+                        console.log("Hata: " + xhr.status + ": " + xhr.responseText);
+                        alert("Müsait IHA Bulunamadı.");
+                    }
+                });
+            } else {
+                alert("Lütfen tüm alanları doldurun.");
+            }
+        });
+
+        var today = new Date();
+        var dd = String(today.getDate()).padStart(2, '0');
+        var mm = String(today.getMonth() + 1).padStart(2, '0'); // Ocak 0 olduğu için +1 eklenir
+        var yyyy = today.getFullYear();
+
+        // Bugünün tarihini 'YYYY-MM-DD' formatına dönüştür
+        today = yyyy + '-' + mm + '-' + dd;
+
+        // Input elementinin 'min' özelliğine bugünün tarihini set et
+        document.getElementById("date_start").setAttribute("min", today);
+        document.getElementById("date_end").setAttribute("min", today);
+    });
+
+    function rent(uavId) {
+        var uavId = uavId;
+        var dateStart = $('#date_start').val();
+        var dateEnd = $('#date_end').val();
+
+        $.ajax({
+            url: '/rest/rentUav/',
+            method: 'POST',
+            data: {
+                uav_id: uavId,
+                date_start: dateStart,
+                date_end: dateEnd,
+                csrfmiddlewaretoken: '{{ csrf_token }}'
+            },
+            success: function (response) {
+                alert('UAV kiralama işlemi başarıyla gerçekleştirildi.');
+                // Kiralama işlemi başarılı olduysa, tabloyu yeniden yükle
+                window.location.reload();
+            },
+            error: function (xhr, errmsg, err) {
+                alert('Hata: ' + xhr.status + ': ' + xhr.responseText);
+            }
+        });
+    }
+</script>
+
+</body>
+</html>

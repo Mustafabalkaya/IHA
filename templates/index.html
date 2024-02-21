@@ -1,0 +1,12 @@
+{% include 'includes/header.html' %}
+
+<section class="mt-5 mb-5 text-center" id="index">
+    {% if request.user.is_authenticated %}
+    <b>IHA Kiralama paneline hoşgeldiniz. Üst menüden işlemlerinizi gerçekleştirebilirsiniz.</b>
+    {% else %}
+<b>IHA kiralama işlemi için lütfen sağ üst köşeden oturum açınız. Hesabınız bulunmuyorsa, hesap oluşturabilirsiniz.</b>    {% endif %}
+</section>
+
+{% include 'includes/footer.html' %}
+</body>
+</html>

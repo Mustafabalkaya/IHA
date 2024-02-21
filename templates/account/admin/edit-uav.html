@@ -1,0 +1,81 @@
+{% include 'includes/header.html' %}
+
+<section class="mt-5 mb-5 text-center d-flex justify-content-center" id="form">
+    <form method="POST" action="/edit-uav/{{ uav.id }}" style="width:100%;" id="editForm">
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-success" role="alert">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+        {% if error_message %}
+            <div class="alert alert-danger" role="alert">
+                {{ error_message }}
+            </div>
+        {% endif %}
+
+        {% csrf_token %}
+        <input type="number" name="uav_id" value="{{ uav.id }}" hidden>
+        <div>
+            <div class="row">
+                <div class="col-sm-4 mb-3">
+                    <label>İsim:</label>
+                    <input type="text" name="uav_name" class="form-control" value="{{ uav.uav_name }}" required>
+                </div>
+                <div class="col-sm-4 mb-3">
+                    <label>Marka:</label>
+                    <input type="text" name="uav_brand" class="form-control" value="{{ uav.uav_brand }}" required>
+                </div>
+                <div class="col-sm-4 mb-3">
+                    <label>Model:</label>
+                    <input type="text" name="uav_model" class="form-control" value="{{ uav.uav_model }}" required>
+                </div>
+            </div>
+        </div>
+        <div>
+            <div class="row">
+                <div class="col-sm-4 mb-3">
+                    <label>Ağırlık (Kg):</label>
+                    <input type="number" step="any" min="1" name="uav_weight" class="form-control" value="{{ uav.uav_weight }}" required>
+                </div>
+                <div class="col-sm-4 mb-3">
+                    <label>Menzil (Mil):</label>
+                    <input type="number" step="any" min="1" name="uav_range" class="form-control" value="{{ uav.uav_range }}" required>
+                </div>
+                <div class="col-sm-4 mb-3">
+                    <label>Adet:</label>
+                    <input type="number" min="1" name="uav_quantity" class="form-control" value="{{ uav.uav_quantity }}" required>
+                </div>
+            </div>
+        </div>
+        <div class="mb-3">
+            <label>Günlük Kiralama Ücreti (TL):</label>
+            <input type="number" step="any" name="daily_rental_fee" class="form-control" value="{{ uav.daily_rental_fee }}" required>
+        </div>
+        <button type="button" class="btn btn-primary" id="saveButton">Kaydet</button>
+    </form>
+</section>
+
+{% include 'includes/footer.html' %}
+<script>
+    $(document).ready(function() {
+        $("#saveButton").click(function() {
+            $.ajax({
+                url: '/save-uav/{{ uav.id }}/',
+                method: 'POST',
+                data: $("#editForm").serialize(),
+                success: function(response) {
+                    // Başarılı bir şekilde güncellendiğine dair mesajı göster
+                    alert("UAV başarıyla güncellendi.");
+                },
+                error: function(xhr, errmsg, err) {
+                    // Hata durumunda hatayı göster
+                    alert("Hata: " + xhr.status + ": " + xhr.responseText);
+                }
+            });
+        });
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,84 @@
+{% include 'includes/header.html' %}
+
+<section class="mt-5 mb-5 text-center d-flex justify-content-center" id="form">
+    <form method="POST" action="/edit-user/{{ user.id }}" style="width:100%;" id="editForm">
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-success" role="alert">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+        {% if error_message %}
+            <div class="alert alert-danger" role="alert">
+                {{ error_message }}
+            </div>
+        {% endif %}
+
+        {% csrf_token %}
+        <input type="number" name="user_id" value="{{ user.id }}" hidden>
+        <div>
+            <div class="row">
+                <div class="col-sm-6 mb-3">
+                    <label>İsim:</label>
+                    <input type="text" name="name" class="form-control" value="{{ user.first_name }}" required>
+                </div>
+                <div class="col-sm-6 mb-3">
+                    <label>Soyisim:</label>
+                    <input type="text" name="surname" class="form-control" value="{{ user.last_name }}" required>
+                </div>
+            </div>
+        </div>
+        <div class="mb-3">
+            <label>E-Posta:</label>
+            <input type="email" name="username" class="form-control" value="{{ user.username }}" required>
+        </div>
+        <div class="mb-3">
+            <label>Telefon:</label>
+            <input type="tel" name="phone" class="form-control" value="{{ user.phone }}" required>
+        </div>
+        <div>
+            <div class="row">
+                <div class="col-sm-6 mb-3">
+                    <label>Parola (Sadece Değiştirecekseniz Doldurun!):</label>
+                    <input type="password" name="password" class="form-control" >
+                </div>
+                <div class="col-sm-6 mb-3">
+                    <label>Parola Tekrar (Sadece Değiştirecekseniz Doldurun!):</label>
+                    <input type="password" name="password_retype" class="form-control" >
+                </div>
+            </div>
+        </div>
+        <div class="mb-3">
+            <label>Yetki</label>
+            <select name="is_staff" class="form-control">
+                <option {% if user.is_staff %} selected {% endif %} value="True">Yönetici</option>
+                <option {% if not user.is_staff %} selected {% endif %} value="False">Kullanıcı</option>
+            </select>
+        </div>
+        <button type="button" class="btn btn-primary" id="saveButton">Kaydet</button>
+    </form>
+</section>
+
+{% include 'includes/footer.html' %}
+<script>
+    $(document).ready(function() {
+        $("#saveButton").click(function() {
+            $.ajax({
+                url: '/save-user/{{ user.id }}/',
+                method: 'POST',
+                data: $("#editForm").serialize(),
+                success: function(response) {
+                    // Başarılı bir şekilde güncellendiğine dair mesajı göster
+                    alert("Kullanıcı başarıyla güncellendi.");
+                },
+                error: function(xhr, errmsg, err) {
+                    // Hata durumunda hatayı göster
+                    alert("Hata: " + xhr.status + ": " + xhr.responseText);
+                }
+            });
+        });
+    });
+</script>
+</body>
+</html>

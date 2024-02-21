@@ -1,0 +1,61 @@
+{% include 'includes/header.html' %}
+
+<section class="mt-5 mb-5 text-center d-flex justify-content-center" id="form">
+    <form method="POST" style="width:100%;">
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-success" role="alert">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+        {% if error_message %}
+            <div class="alert alert-danger" role="alert">
+                {{ error_message }}
+            </div>
+        {% endif %}
+
+        {% csrf_token %}
+        <div>
+            <div class="row">
+                <div class="col-sm-4 mb-3">
+                    <label>İsim:</label>
+                    <input type="text" name="uav_name" class="form-control" required>
+                </div>
+                <div class="col-sm-4 mb-3">
+                    <label>Marka:</label>
+                    <input type="text" name="uav_brand" class="form-control" required>
+                </div>
+                <div class="col-sm-4 mb-3">
+                    <label>Model:</label>
+                    <input type="text" name="uav_model" class="form-control" required>
+                </div>
+            </div>
+        </div>
+        <div>
+            <div class="row">
+                <div class="col-sm-4 mb-3">
+                    <label>Ağırlık (Kg):</label>
+                    <input type="number" step="any" min="1" name="uav_weight" class="form-control" required>
+                </div>
+                <div class="col-sm-4 mb-3">
+                    <label>Menzil (Mil):</label>
+                    <input type="number" step="any" min="1" name="uav_range" class="form-control" required>
+                </div>
+                <div class="col-sm-4 mb-3">
+                    <label>Adet:</label>
+                    <input type="number" min="1" name="uav_quantity" class="form-control" required>
+                </div>
+            </div>
+        </div>
+        <div class="mb-3">
+            <label>Günlük Kiralama Ücreti (TL):</label>
+            <input type="number" step="any" name="daily_rental_fee" class="form-control" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Oluştur</button>
+    </form>
+</section>
+
+{% include 'includes/footer.html' %}
+</body>
+</html>

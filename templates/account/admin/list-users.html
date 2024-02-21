@@ -1,0 +1,199 @@
+{% include 'includes/header.html' %}
+
+<section class="mt-5 mb-5 text-center d-flex justify-content-center" id="list">
+
+    <div class="card text-start w-100">
+        <div class="card-header d-flex justify-content-between align-items-center">
+            <h3 class="card-title">Kullanıcılar</h3>
+            <a class="btn btn-primary" href="/create-user">Kullanıcı Oluştur</a>
+        </div>
+        <div class="card-body">
+            {% csrf_token %}
+            <div class="table-responsive">
+                <table id="dataTable" class="table table-centered table-nowrap mb-0 rounded">
+                    <thead class="thead-light">
+                    <tr>
+                        <th class="border-0">İsim Soyisim</th>
+                        <th class="border-0">E-Posta</th>
+                        <th class="border-0">Telefon</th>
+                        <th class="border-0">Üyelik Tarihi</th>
+                        <th class="border-0">Son Görülme</th>
+                        <th class="border-0">Yetki</th>
+                        <th class="border-0">İşlem</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+{% include 'includes/footer.html' %}
+<script>
+     function deleteRecord(id) {
+         var userId = id;
+         if (confirm("Bu veriyi silmek istediğinizden emin misiniz?")) {
+             $.ajax({
+                 url: '/delete-user/' + userId + '/',
+                 method: 'POST',
+                 data: {
+                     csrfmiddlewaretoken: '{{ csrf_token }}'
+                 },
+                 success: function (response) {
+                     alert("Veri başarıyla silindi.");
+                     table.ajax.reload();
+                 },
+                 error: function (xhr, errmsg, err) {
+                     alert("Hata: " + xhr.status + ": " + xhr.responseText);
+                 }
+             });
+         }
+     }
+    var table = $("#dataTable").DataTable({
+        ordering: true,
+        processing: true,
+        serverSide: true,
+        ajax: {
+            url: '/rest/getUsers/',
+            type: 'POST',
+            data: function (d) {
+                d.search.value = $('input[type="search"]').val(); // Arama değerini al
+                d.csrfmiddlewaretoken = $('input[name="csrfmiddlewaretoken"]').val(); // CSRF tokenini ekleyin
+            }
+        },
+        columns: [
+            { data: 'user_name' },
+            { data: 'user_email' },
+            { data: 'user_phone' },
+            { data: 'user_date_joined' },
+            { data: 'user_last_login' },
+            { data: 'user_role' },
+            {
+                data: null,
+                render: function(data, type, row, meta) {
+                    return '<a href="/edit-user/' + row.id + '">Düzenle</a> <br> <button type="button" class="btn text-danger" onclick="deleteRecord(' +  row.id+ ');">Sil</button>'; // Aksiyon bağlantısı eklendi
+                }
+            }
+        ],
+        order: [],
+        dom: 'Bfrtip',
+        lengthMenu: [
+            [10, 25, 50, -1],
+            ['10 Satır', '25 Satır', '50 Satır', 'Tamamı']
+        ],
+        buttons: [
+            {
+                extend: 'pageLength',
+                text: '<i class="fa fa-arrows-v text-primary"> </i> <i class="fas fa-align-justify"></i> Satır',
+                titleAttr: 'Sayfada Gösterilecek Satır Sayısı',
+
+            },
+            {
+                extend: 'colvis',
+                text: '<i class="fa fa-table"></i> Sütunlar',
+                titleAttr: 'Sütunları Göster-Gizle'
+            },
+
+            {
+                extend: 'excelHtml5',
+                text: '<i class="fas fa-file-excel"></i> Excel',
+                titleAttr: 'XLSX Olarak Dışarı Aktar',
+                title: 'Kullanıcılar',// Save File Name
+                exportOptions: {
+                    columns: ':visible'
+                },
+            },
+            {
+                extend: 'pdfHtml5',
+                text: '<i class="fas fa-file-pdf"></i> PDF',
+                titleAttr: 'PDF Olarak Dışarı Aktar',
+                message: 'Kullanıcılar', //PDF Mesajı=Başlığın altında soldan başlıktan küçük fontla görünür
+                title: 'Kullanıcılar',// Save File Name
+                download: 'open',//PDF'i Browserda Yeni Sekmede  Pencere açar
+                orientation: 'landscape',
+                pageSize: 'A3',
+                exportOptions: {
+                    columns: ':visible' //columns: [ 0, 1, 2, 5 ] //= Columnları sabitlemek her halukarda görntülenmesini sağlamak için
+                }
+            },
+            {
+                extend: 'print',
+                text: '<i class="fas fa-print"></i> Yazdır',
+                titleAttr: 'Yazdır',
+                message: 'Kullanıcılar', //PDF Mesajı=Başlığın altında soldan başlıktan küçük fontla görünür
+                title: 'Kullanıcılar',// Save File Name
+                orientation: 'landscape',
+                pageSize: 'A3',
+                customize: function (win) {
+
+                    var last = null;
+                    var current = null;
+                    var bod = [];
+
+                    var css = '@page { size: landscape;}',
+                        head = win.document.head || win.document.getElementsByTagName('head')[0],
+                        style = win.document.createElement('style');
+
+                    style.type = 'text/css';
+                    style.media = 'print';
+
+                    if (style.styleSheet) {
+                        style.styleSheet.cssText = css;
+                    } else {
+                        style.appendChild(win.document.createTextNode(css));
+                    }
+
+                    head.appendChild(style);
+                },
+                exportOptions: {
+                    columns: ':visible' //columns: [ 0, 1, 2, 5 ] //= Columnları sabitlemek her halukarda görntülenmesini sağlamak için
+                }
+            },
+
+        ],
+        language: {
+            "sDecimal": ",",
+            "sEmptyTable": "Tabloda herhangi bir veri mevcut değil",
+            "sInfo": "_TOTAL_ kayıttan _START_ - _END_ arasındaki kayıtlar gösteriliyor",
+            "sInfoEmpty": "Kayıt yok",
+            "sInfoFiltered": "(_MAX_ kayıt içerisinden bulunan)",
+            "sInfoPostFix": "",
+            "sInfoThousands": ".",
+            "sLengthMenu": "Sayfada _MENU_ kayıt göster",
+            "sLoadingRecords": "Yükleniyor...",
+            "sProcessing": "İşleniyor...",
+            "sSearch": "Ara:",
+            "sZeroRecords": "Eşleşen kayıt bulunamadı",
+            "oPaginate": {
+                "sFirst": "İlk",
+                "sLast": "Son",
+                "sNext": "Sonraki",
+                "sPrevious": "Önceki"
+            },
+            "oAria": {
+                "sSortAscending": ": artan sütun sıralamasını aktifleştir",
+                "sSortDescending": ": azalan sütun sıralamasını aktifleştir"
+            },
+            "select": {
+                "rows": {
+                    "_": "%d kayıt seçildi",
+                    "0": "",
+                    "1": "1 kayıt seçildi"
+                }
+            },
+            "buttons": {
+                "copySuccess": {
+                    "1": "1 Satır Kopyalandı",
+                    "_": "%d Satır Kopyalandı"
+                },
+                "copyTitle": 'Başarıyla Kopyalandı'
+            }
+        }
+    });
+</script>
+</body>
+</html>
