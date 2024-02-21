@@ -96,3 +96,7 @@ Bu sayede, yönetici olan kullanıcılar projedeki veri yönetimini etkili bir �
 <b> 4- Kiralama Admin Ekranı</b>
 
 ![alt text](https://raw.githubusercontent.com/Mustafabalkaya/UAV-Rental-Application-with-Python-Django/main/Screenshots/KiralamaAdmin.JPG)
+
+<b> 5- Kullanıcılar Ekranı</b>
+
+![alt text](https://raw.githubusercontent.com/Mustafabalkaya/UAV-Rental-Application-with-Python-Django/main/Screenshots/Kullanıcılar.JPG)
