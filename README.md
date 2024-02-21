@@ -66,6 +66,8 @@ DATABASES = {
 }
 ```
 
+Çalıştıralım : python manage.py runserver
+
 Projeyi başlattığınızda, veritabanı tabloları otomatik olarak oluşturulur ve gerekli migration işlemleri uygulanır.
 
 İlk kullanıcıyı oluşturmak için kaydolun ve PostgreSQL veritabanı üzerinden kullanıcının yetkisini belirlemek üzere "is_staff" sütununu kullanarak yönetici olarak tanımlayabilirsiniz. Yönetici olan kullanıcılar, normal kullanıcılardan farklı özelliklere sahiptir. Bu özellikler arasında, kayıtları ekleme, silme, güncelleme gibi temel işlemleri gerçekleştirme yetkisi bulunmaktadır.
