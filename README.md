@@ -80,3 +80,4 @@ Bu sayede, yönetici olan kullanıcılar projedeki veri yönetimini etkili bir �
 
 # Ekran Görüntüleri
 ![alt text](https://i.hizliresim.com/s993ghy.JPG)
+![alt text](https://i.hizliresim.com/1o9g54q.JPG)
