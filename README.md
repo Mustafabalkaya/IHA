@@ -100,3 +100,26 @@ Bu sayede, yönetici olan kullanıcılar projedeki veri yönetimini etkili bir �
 <b> 5- Kullanıcılar Ekranı</b>
 
 ![alt text](https://raw.githubusercontent.com/Mustafabalkaya/UAV-Rental-Application-with-Python-Django/main/Screenshots/Kullanıcılar.JPG)
+
+
+<b> 5- Veri Tabanı Ekranı</b>
+
+![alt text](https://raw.githubusercontent.com/Mustafabalkaya/UAV-Rental-Application-with-Python-Django/main/Screenshots/Veritabanı%20örnek%20görsel.JPG)  
+
+
+<b> 6- İha Düzenleme</b>
+
+![alt text](https://raw.githubusercontent.com/Mustafabalkaya/UAV-Rental-Application-with-Python-Django/main/Screenshots/İha%20Düzenleme.JPG)
+
+<b> 7- İha Oluşturma</b>
+
+![alt text](https://raw.githubusercontent.com/Mustafabalkaya/UAV-Rental-Application-with-Python-Django/main/Screenshots/İha%20Oluşturma.JPG)
+
+
+<b> 7- İhalar</b>
+
+![alt text](https://raw.githubusercontent.com/Mustafabalkaya/UAV-Rental-Application-with-Python-Django/main/Screenshots/İhalar.JPG)
+
+
+
+
