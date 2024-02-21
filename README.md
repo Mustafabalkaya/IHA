@@ -79,5 +79,8 @@ Yöneticiler, ayrıca kiralanan ihaleleri takip etme gibi özel yetkilere sahipt
 Bu sayede, yönetici olan kullanıcılar projedeki veri yönetimini etkili bir şekilde gerçekleştirebilir ve güvenliği sağlayabilir.
 
 # Ekran Görüntüleri
+```
+# 1 Giriş Yapma Ekranı
+```
 ![Giriş Yapma Ekranı](https://i.hizliresim.com/seffn32.JPG)
 
