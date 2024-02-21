@@ -79,21 +79,20 @@ Yöneticiler, ayrıca kiralanan ihaleleri takip etme gibi özel yetkilere sahipt
 Bu sayede, yönetici olan kullanıcılar projedeki veri yönetimini etkili bir şekilde gerçekleştirebilir ve güvenliği sağlayabilir.
 
 # Ekran Görüntüleri
-```
-# 1 Giriş Yapma Ekranı
-```
+
+<b>1- Giriş Yapma Ekranı</b>
 ![alt text](https://raw.githubusercontent.com/Mustafabalkaya/UAV-Rental-Application-with-Python-Django/main/Screenshots/GirisYap.JPG)
-```
-# 2 Kayıt Olma Ekranı
-```
+
+ <b> 2- Kayıt Olma Ekranı</b>
+
 ![alt text](https://raw.githubusercontent.com/Mustafabalkaya/UAV-Rental-Application-with-Python-Django/main/Screenshots/Kay%C4%B1t%20Ol.JPG)
 
-```
-# 3 Kiralama Ekranı
-```
+
+<b> 3- Kiralama Ekranı</b> 
+
 ![alt text](https://raw.githubusercontent.com/Mustafabalkaya/UAV-Rental-Application-with-Python-Django/main/Screenshots/Kiralama.JPG)
 
-```
-<b> 4 </b>- Kiralama Admin Ekranı
-```
+
+<b> 4- Kiralama Admin Ekranı</b>
+
 ![alt text](https://raw.githubusercontent.com/Mustafabalkaya/UAV-Rental-Application-with-Python-Django/main/Screenshots/KiralamaAdmin.JPG)
