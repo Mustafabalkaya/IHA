@@ -82,5 +82,5 @@ Bu sayede, yönetici olan kullanıcılar projedeki veri yönetimini etkili bir �
 ```
 # 1 Giriş Yapma Ekranı
 ```
-![Giriş Yapma Ekranı](https://i.hizliresim.com/seffn32.JPG)
+![Giriş Yapma Ekranı]([https://i.hizliresim.com/seffn32.JPG](https://github.com/Mustafabalkaya/UAV-Rental-Application-with-Python-Django/blob/main/Screenshots/GirisYap.JPG)https://github.com/Mustafabalkaya/UAV-Rental-Application-with-Python-Django/blob/main/Screenshots/GirisYap.JPG)
 
