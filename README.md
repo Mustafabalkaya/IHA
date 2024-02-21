@@ -83,4 +83,17 @@ Bu sayede, yönetici olan kullanıcılar projedeki veri yönetimini etkili bir �
 # 1 Giriş Yapma Ekranı
 ```
 ![alt text](https://raw.githubusercontent.com/Mustafabalkaya/UAV-Rental-Application-with-Python-Django/main/Screenshots/GirisYap.JPG)
+```
+# 2 Kayıt Olma Ekranı
+```
+![alt text](https://raw.githubusercontent.com/Mustafabalkaya/UAV-Rental-Application-with-Python-Django/main/Screenshots/Kay%C4%B1t%20Ol.JPG)
 
+```
+# 3 Kiralama Ekranı
+```
+![alt text](https://raw.githubusercontent.com/Mustafabalkaya/UAV-Rental-Application-with-Python-Django/main/Screenshots/Kiralama.JPG)
+
+```
+<b> 4 </b>- Kiralama Admin Ekranı
+```
+![alt text](https://raw.githubusercontent.com/Mustafabalkaya/UAV-Rental-Application-with-Python-Django/main/Screenshots/KiralamaAdmin.JPG)
