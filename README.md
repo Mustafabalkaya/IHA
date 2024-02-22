@@ -66,6 +66,10 @@ DATABASES = {
 }
 ```
 
+Çalıştıralım
+```
+ python manage.py runserver
+```
 Projeyi başlattığınızda, veritabanı tabloları otomatik olarak oluşturulur ve gerekli migration işlemleri uygulanır.
 
 İlk kullanıcıyı oluşturmak için kaydolun ve PostgreSQL veritabanı üzerinden kullanıcının yetkisini belirlemek üzere "is_staff" sütununu kullanarak yönetici olarak tanımlayabilirsiniz. Yönetici olan kullanıcılar, normal kullanıcılardan farklı özelliklere sahiptir. Bu özellikler arasında, kayıtları ekleme, silme, güncelleme gibi temel işlemleri gerçekleştirme yetkisi bulunmaktadır.
@@ -73,4 +77,49 @@ Projeyi başlattığınızda, veritabanı tabloları otomatik olarak oluşturulu
 Yöneticiler, ayrıca kiralanan ihaleleri takip etme gibi özel yetkilere sahiptir. Bu özellikler sayesinde, projede yer alan kayıtların kontrolünü daha etkili bir şekilde yönetebilirler. Ayrıca, projede yer alan kullanıcıların gerçekleştirdiği ekleme, silme, güncelleme gibi işlemleri görüntüleme yetkisi ile kullanıcı aktivitelerini takip edebilirler.
 
 Bu sayede, yönetici olan kullanıcılar projedeki veri yönetimini etkili bir şekilde gerçekleştirebilir ve güvenliği sağlayabilir.
+
+# Ekran Görüntüleri
+
+<b>1- Giriş Yapma Ekranı</b>
+![alt text](https://raw.githubusercontent.com/Mustafabalkaya/UAV-Rental-Application-with-Python-Django/main/Screenshots/GirisYap.JPG)
+
+ <b> 2- Kayıt Olma Ekranı</b>
+
+![alt text](https://raw.githubusercontent.com/Mustafabalkaya/UAV-Rental-Application-with-Python-Django/main/Screenshots/Kay%C4%B1t%20Ol.JPG)
+
+
+<b> 3- Kiralama Ekranı</b> 
+
+![alt text](https://raw.githubusercontent.com/Mustafabalkaya/UAV-Rental-Application-with-Python-Django/main/Screenshots/Kiralama.JPG)
+
+
+<b> 4- Kiralama Admin Ekranı</b>
+
+![alt text](https://raw.githubusercontent.com/Mustafabalkaya/UAV-Rental-Application-with-Python-Django/main/Screenshots/KiralamaAdmin.JPG)
+
+<b> 5- Kullanıcılar Ekranı</b>
+
+![alt text](https://raw.githubusercontent.com/Mustafabalkaya/UAV-Rental-Application-with-Python-Django/main/Screenshots/Kullanıcılar.JPG)
+
+
+<b> 5- Veri Tabanı Ekranı</b>
+
+![alt text](https://raw.githubusercontent.com/Mustafabalkaya/UAV-Rental-Application-with-Python-Django/main/Screenshots/Veritabanı%20örnek%20görsel.JPG)  
+
+
+<b> 6- İha Düzenleme</b>
+
+![alt text](https://raw.githubusercontent.com/Mustafabalkaya/UAV-Rental-Application-with-Python-Django/main/Screenshots/İha%20Düzenleme.JPG)
+
+<b> 7- İha Oluşturma</b>
+
+![alt text](https://raw.githubusercontent.com/Mustafabalkaya/UAV-Rental-Application-with-Python-Django/main/Screenshots/İha%20Oluşturma.JPG)
+
+
+<b> 7- İhalar</b>
+
+![alt text](https://raw.githubusercontent.com/Mustafabalkaya/UAV-Rental-Application-with-Python-Django/main/Screenshots/İhalar.JPG)
+
+
+
 
