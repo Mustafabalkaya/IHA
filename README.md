@@ -44,7 +44,7 @@ git clone
 
 Proje dizine gidin
 ```
-cd IHA-Kiralama
+cd UAV-Rental-Application-with-Python-Django
 ```
 
 Proje bağımlılıklarını yükleyin
