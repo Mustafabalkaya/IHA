@@ -102,7 +102,7 @@
                 extend: 'excelHtml5',
                 text: '<i class="fas fa-file-excel"></i> Excel',
                 titleAttr: 'XLSX Olarak Dışarı Aktar',
-                title: 'Kiralamalarım',// Save File Name
+                title: 'Kiralamalarım',// Kaydedilecek dosyanın adı
                 exportOptions: {
                     columns: ':visible'
                 },
@@ -111,8 +111,8 @@
                 extend: 'pdfHtml5',
                 text: '<i class="fas fa-file-pdf"></i> PDF',
                 titleAttr: 'PDF Olarak Dışarı Aktar',
-                message: 'Kiralamalarım', //PDF Mesajı=Başlığın altında soldan başlıktan küçük fontla görünür
-                title: 'Kiralamalarım',// Save File Name
+                message: 'Kiralamalarım', //PDF Mesajı=PDF'deki başlığın altında, soldan küçük puntoyla görünen bir mesajı ifade eder.
+                title: 'Kiralamalarım',// Kaydedilecek dosyanın ismi
                 download: 'open',//PDF'i Browserda Yeni Sekmede  Pencere açar
                 orientation: 'landscape',
                 pageSize: 'A3',
@@ -124,8 +124,8 @@
                 extend: 'print',
                 text: '<i class="fas fa-print"></i> Yazdır',
                 titleAttr: 'Yazdır',
-                message: 'Kiralamalarım', //PDF Mesajı=Başlığın altında soldan başlıktan küçük fontla görünür
-                title: 'Kiralamalarım',// Save File Name
+                message: 'Kiralamalarım', //PDF Mesajı=PDF'deki başlığın altında, soldan küçük puntoyla görünen bir mesajı ifade eder.
+                title: 'Kiralamalarım',  //Kaydedilecek dosyanın ismi
                 orientation: 'landscape',
                 pageSize: 'A3',
                 customize: function (win) {

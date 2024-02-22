@@ -113,9 +113,9 @@
                 extend: 'pdfHtml5',
                 text: '<i class="fas fa-file-pdf"></i> PDF',
                 titleAttr: 'PDF Olarak Dışarı Aktar',
-                message: 'IHALAR', //PDF Mesajı=Başlığın altında soldan başlıktan küçük fontla görünür
-                title: 'IHALAR',// Save File Name
-                download: 'open',//PDF'i Browserda Yeni Sekmede  Pencere açar
+                message: 'IHALAR', //PDF Mesajı=PDF'deki başlığın altında, soldan küçük puntoyla görünen bir mesajı ifade eder.
+                title: 'IHALAR',   //Kaydedilecek dosyanın ismi
+                download: 'open',  //PDF'i Browserda Yeni Sekmede  Pencere açar
                 orientation: 'landscape',
                 pageSize: 'A3',
                 exportOptions: {
@@ -126,7 +126,7 @@
                 extend: 'print',
                 text: '<i class="fas fa-print"></i> Yazdır',
                 titleAttr: 'Yazdır',
-                message: 'IHALAR', //PDF Mesajı=Başlığın altında soldan başlıktan küçük fontla görünür
+                message: 'IHALAR', //PDF Mesajı=PDF'deki başlığın altında, soldan küçük puntoyla görünen bir mesajı ifade eder.
                 title: 'IHALAR',// Save File Name
                 orientation: 'landscape',
                 pageSize: 'A3',
@@ -152,7 +152,7 @@
                     head.appendChild(style);
                 },
                 exportOptions: {
-                    columns: ':visible' //columns: [ 0, 1, 2, 5 ] //= Columnları sabitlemek her halukarda görntülenmesini sağlamak için
+                    columns: ':visible' //columns: [ 0, 1, 2, 5 ] //= Columnları sabitlemek , her durumda görntülenmesini sağlamak için
                 }
             },
 

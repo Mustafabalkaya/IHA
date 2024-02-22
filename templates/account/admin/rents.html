@@ -82,21 +82,21 @@
                 extend: 'pdfHtml5',
                 text: '<i class="fas fa-file-pdf"></i> PDF',
                 titleAttr: 'PDF Olarak Dışarı Aktar',
-                message: 'Kiralamalar', //PDF Mesajı=Başlığın altında soldan başlıktan küçük fontla görünür
-                title: 'Kiralamalar',// Save File Name
-                download: 'open',//PDF'i Browserda Yeni Sekmede  Pencere açar
+                message: 'Kiralamalar', //PDF Mesajı=PDF'deki başlığın altında, soldan küçük puntoyla görünen bir mesajı ifade eder.
+                title: 'Kiralamalar',  //PDF'in Kaydedilecek İsmi
+                download: 'open',      //PDF'i Browserda Yeni Sekmede  Pencere açar
                 orientation: 'landscape',
                 pageSize: 'A3',
                 exportOptions: {
-                    columns: ':visible' //columns: [ 0, 1, 2, 5 ] //= Columnları sabitlemek her halukarda görntülenmesini sağlamak için
+                    columns: ':visible' //columns: [ 0, 1, 2, 5 ] //= Columnları sabitlemek her durumda görntülenmesini sağlamak için
                 }
             },
             {
                 extend: 'print',
                 text: '<i class="fas fa-print"></i> Yazdır',
                 titleAttr: 'Yazdır',
-                message: 'Kiralamalar', //PDF Mesajı=Başlığın altında soldan başlıktan küçük fontla görünür
-                title: 'Kiralamalar',// Save File Name
+                message: 'Kiralamalar', //PDF Mesajı=PDF'deki başlığın altında, soldan küçük puntoyla görünen bir mesajı ifade eder.
+                title: 'Kiralamalar',  //PDF'in Kaydedilecek İsmi
                 orientation: 'landscape',
                 pageSize: 'A3',
                 customize: function (win) {
@@ -121,7 +121,7 @@
                     head.appendChild(style);
                 },
                 exportOptions: {
-                    columns: ':visible' //columns: [ 0, 1, 2, 5 ] //= Columnları sabitlemek her halukarda görntülenmesini sağlamak için
+                    columns: ':visible' //columns: [ 0, 1, 2, 5 ] //= Columnları sabitlemek her durumda görntülenmesini sağlamak için
                 }
             },
 
