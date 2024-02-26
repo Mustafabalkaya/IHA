@@ -116,7 +116,7 @@ Bu sayede, yönetici olan kullanıcılar projedeki veri yönetimini etkili bir �
 ![alt text](https://raw.githubusercontent.com/Mustafabalkaya/UAV-Rental-Application-with-Python-Django/main/Screenshots/İha%20Oluşturma.JPG)
 
 
-<b> 7- İhalar</b>
+<b> 8- İhalar</b>
 
 ![alt text](https://raw.githubusercontent.com/Mustafabalkaya/UAV-Rental-Application-with-Python-Django/main/Screenshots/İhalar.JPG)
 
